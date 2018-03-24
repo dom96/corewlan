@@ -50,6 +50,17 @@ proc channelBand*(self: CWChannel): CWChannelBand {.importobjc, header: header.}
 proc channelNumber*(self: CWChannel): NSInteger {.importobjc, header: header.}
 proc channelWidth*(self: CWChannel): CWChannelWidth {.importobjc, header: header.}
 
+# CWNetwork
+
+type
+  CWNetwork* {.importc, header: header, final.} = ptr object
+
+proc beaconInterval*(self: CWNetwork): NSInteger {.importobjc, header: header.}
+proc bssid*(self: CWNetwork): NSString {.importobjc, header: header.}
+proc ssid*(self: CWNetwork): NSString {.importobjc, header: header.}
+proc wlanChannel*(self: CWNetwork): CWChannel {.importobjc, header: header.}
+proc rssiValue*(self: CWNetwork): NSInteger {.importobjc, header: header.}
+
 # CWInterface
 
 type
@@ -63,6 +74,8 @@ proc disassociate*(self: CWInterface) {.importobjc, header: header.}
 proc supportedWLANChannels*(self: CWInterface): NSSet {.importobjc, header: header.}
 proc setWLANChannel*(self: CWInterface, channel: CWChannel, error: pointer = nil)
   {.importobjc, header: header.}
+proc cachedScanResults*(self: CWInterface): NSSet {.importobjc, header: header.}
+
 
 # CWWifiClient
 
